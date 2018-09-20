@@ -7,8 +7,8 @@ You can control it either with your mouse cursor, or with buttons - whatever you
 
 ---
 ## Running it
-Build it yourself I don't have any released binaries as of now
-Start the exe with a config.json file as a commandline parameter and you're gucci
+
+Get latest version (currently: 0.1) from [the releases page](https://github.com/qwertxzy/GameLauncher/releases)
 
 ---
 ## Configuration
