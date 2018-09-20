@@ -42,7 +42,7 @@ namespace GameLauncher
                     Panel p = new Panel();
 
                     p.Location = new Point(3, 3);
-                    p.Name = string.Format("panel{0}", i);
+                    p.Name = $"panel{i}";
                     p.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width / 3, Screen.PrimaryScreen.WorkingArea.Height / 6);
                     p.Margin = new Padding(5, 10, 5, 10);
 
@@ -57,6 +57,7 @@ namespace GameLauncher
                         pb.Image = Image.FromFile(jsonConfig["games"][i]["icon"]);
                     }
                     catch (Exception) { }
+
                     pb.SizeMode = PictureBoxSizeMode.Zoom;
 
                     // create the label
