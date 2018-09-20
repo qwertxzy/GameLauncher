@@ -1,29 +1,31 @@
 {
-  "games": [
-    {
-      "executable": "path1",
-      "icon": "imgpath1",
-      "parameters": "param1",
-      "text": "Game1"
+    "games": [
+        {
+            "executable": "executable1",
+            "icon": "icon1",
+            "parameters": "param1",
+            "text": "Game1"
+        },
+        {
+            "executable": "executable2",
+            "icon": "icon2",
+            "parameters": "param2",
+            "text": "Game2"
+        }
+    ],
+    "keybindings": {
+        "exit": 27,
+        "forwards": 83,
+        "reverse": 65,
+        "select": 49
     },
-    {
-      "executable": "path2",
-      "icon": "imgpath2",
-      "parameters": "param2",
-      "text": "Game2"
+    "misc": {
+        "backgroundcolor": "#2B303A",
+        "boxcolor": "#FFFCF9",
+        "highlightcolor": "#B1EDE8",
+        "selectedcolor": "#FF6978",
+        "threshhold": 100,
+        "horizontal_count": 3,
+        "vertical_count": 6
     }
-  ],
-  "keybindings": {
-    "exit": 27,
-    "forwards": 83,
-    "reverse": 65,
-    "select": 49
-  },
-  "misc": {
-    "backgroundcolor": "#2B303A",
-    "boxcolor": "#FFFCF9",
-    "highlightcolor": "#B1EDE8",
-    "selectedcolor": "#FF6978",
-    "threshhold": 100
-  }
 }
