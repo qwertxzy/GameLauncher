@@ -24,15 +24,18 @@ namespace GameLauncher
             InitializeComponent();
             this.m = m;
 
-            this.SelectKey = (int)m.jsonConfig["keybindings"]["select"];
-            this.QuitKey = (int)m.jsonConfig["keybindings"]["exit"];
-            this.ForwardsKey = (int)m.jsonConfig["keybindings"]["forwards"];
-            this.ReverseKey = (int)m.jsonConfig["keybindings"]["reverse"];
+            this.SelectKey =   (int)m.jsonConfig.Bindings.SelectKey;
+            this.QuitKey =     (int)m.jsonConfig.Bindings.ExitKey;
+            this.ForwardsKey = (int)m.jsonConfig.Bindings.ForwardsKey;
+            this.ReverseKey =  (int)m.jsonConfig.Bindings.ReverseKey;
 
-            LabelSelect.Text = Enum.GetName(typeof(Keys), (int)m.jsonConfig["keybindings"]["select"]);
-            LabelQuit.Text = Enum.GetName(typeof(Keys), (int)m.jsonConfig["keybindings"]["exit"]);
-            LabelForwards.Text = Enum.GetName(typeof(Keys), (int)m.jsonConfig["keybindings"]["forwards"]);
-            LabelReverse.Text = Enum.GetName(typeof(Keys), (int)m.jsonConfig["keybindings"]["reverse"]);
+            LabelSelect.Text =   Enum.GetName(typeof(Keys), (int)m.jsonConfig.Bindings.SelectKey);
+            LabelQuit.Text =     Enum.GetName(typeof(Keys), (int)m.jsonConfig.Bindings.ExitKey);
+            LabelForwards.Text = Enum.GetName(typeof(Keys), (int)m.jsonConfig.Bindings.ForwardsKey);
+            LabelReverse.Text =  Enum.GetName(typeof(Keys), (int)m.jsonConfig.Bindings.ReverseKey);
+            SensivityUpDown.Value = m.jsonConfig.Misc.Threshold;
+            VertUpDown.Value = m.jsonConfig.Misc.VerticalCount;
+            HorizUpDown.Value = m.jsonConfig.Misc.HorizontalCount;
         }
 
         private void BtnQuit_Click(object sender, EventArgs e)
@@ -61,10 +64,14 @@ namespace GameLauncher
 
         private void BtnDone_Click(object sender, EventArgs e)
         {
-            m.jsonConfig["keybindings"]["select"] = SelectKey;
-            m.jsonConfig["keybindings"]["exit"] = QuitKey;
-            m.jsonConfig["keybindings"]["forwards"] = ForwardsKey;
-            m.jsonConfig["keybindings"]["reverse"] = ReverseKey;
+            m.jsonConfig.Bindings.SelectKey = SelectKey;
+            m.jsonConfig.Bindings.ExitKey = QuitKey;
+            m.jsonConfig.Bindings.ForwardsKey = ForwardsKey;
+            m.jsonConfig.Bindings.ReverseKey = ReverseKey;
+
+            m.jsonConfig.Misc.Threshold = (int)SensivityUpDown.Value;
+            m.jsonConfig.Misc.HorizontalCount = (int)HorizUpDown.Value;
+            m.jsonConfig.Misc.VerticalCount = (int)VertUpDown.Value;
 
             this.Close();
         }
