@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Json;
 using System;
 using System.Diagnostics;
+using System.Threading;
 using GameLauncher.Models;
 using Newtonsoft.Json;
 
@@ -133,20 +133,26 @@ namespace GameLauncher
                 Cursor.Hide();
             }
             //if something goes wrong here, it's most probably the json file
-            catch (Exception)
+            catch (Exception e)
             {
+                #if DEBUG
+                    throw e;
+                #endif
                 //so let's tell the user that the json had some mistakes
                 Label lbl = new Label();
-                lbl.Text = "Something went wrong while reading the configuration file :(";
+                lbl.Text = "A problem has been detected in the configuration file and GameLauncher.exe has been interrupted to prevent any unintended behavior." +
+                           "\nYou may find details about the error below:\n\n" + e.Message + "\n\n" +
+                           "Please check your configuration file and make sure it is correct.";
                 lbl.Dock = DockStyle.Fill;
-                lbl.Font = new Font("Arial", 35, FontStyle.Bold);
+                lbl.Font = new Font("Arial", 24, FontStyle.Regular);
                 lbl.ForeColor = Color.White;
                 lbl.Padding = new Padding(15);
 
                 this.BackColor = Color.Blue;
-                this.Controls.Add(lbl);
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
+                Thread.Sleep(500);
+                this.Controls.Add(lbl);
             }
         }
 
